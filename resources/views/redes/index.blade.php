@@ -16,7 +16,7 @@
                             </h2>
 
                             <p class="mt-1 text-sm text-gray-600">
-                                {{ __("Crear o editar la informacion de sus redes") }}
+                                {{ __("Crear o editar la informacion de sus redes.") }}
                             </p>
                         </header>
 
@@ -46,6 +46,12 @@
                                 <x-input-label for="twitter" :value="__('Twitter')" />
                                 <x-text-input id="twitter" name="twitter" type="text" class="mt-1 block w-full" value="{{ $redes[4] ?? '' }}" autofocus autocomplete="twitter" />
                                 <x-input-error class="mt-2" :messages="$errors->get('twitter')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="tiktok" :value="__('Tiktok')" />
+                                <x-text-input id="tiktok" name="tiktok" type="text" class="mt-1 block w-full" value="{{ $redes[5] ?? '' }}" autofocus autocomplete="tiktok" />
+                                <x-input-error class="mt-2" :messages="$errors->get('tiktok')" />
                             </div>
 
                             <div class="flex items-center gap-4">

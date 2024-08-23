@@ -99,7 +99,7 @@
                             </div>
                             <div class="flex justify-center items-center">
                                 <div class="flex justify-center ">
-                                    <button id="shareButton" class="p-button p-component p-button-raised p-button-text text-md shadow-lg rounded-lg p-2" type="button" onclick="copyToClipboard()" style="color: rgb(0 106 255); border-width: 3px; border-color: rgb(103 232 249);">
+                                    <button id="shareButton" class="p-button p-component p-button-raised p-button-text text-md shadow-lg rounded-lg p-2" type="button" onclick="shareContent()" style="color: rgb(0 106 255); border-width: 3px; border-color: rgb(103 232 249);">
                                         <span class="flex items-center text-black">
                                             <span class="" style="color: rgb(103 232 249); border-color: rgb(103 232 249);">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="width: 50px; height: 50px; vertical-align: -0.125em; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-icon="mdi:share-variant">
@@ -113,7 +113,7 @@
                         </div>
                         <div class="flex justify-center">
                             <!-- Redes -->
-                            <div class="flex justify-center text-sm mt-6 gap-6">
+                            <div class="flex justify-center text-sm mt-6 mb-6 gap-6">
                                 @foreach($redes as $red)
                                 @if($red->red_id == 1)
                                 <a class="text-black " href="{{ $red->descripcion }}" target="_blank">
@@ -139,6 +139,12 @@
                                         <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
                                     </svg>
                                 </a>
+                                @elseif ($red->red_id == 5)
+                                <a class="text-black " href="{{ $red->descripcion }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
+                                        <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z" />
+                                    </svg>
+                                </a>
                                 @endif
                                 @endforeach
                             </div>
@@ -162,15 +168,23 @@
     </div>
 
     <script>
-        function copyToClipboard() {
+        function shareContent() {
             var loginToken = "{{ $user->login_token }}";
             var url = window.location.origin + '/compartir/' + loginToken;
 
-            navigator.clipboard.writeText(url).then(function() {
-                alert('URL copiada al portapapeles: ' + url);
-            }, function(err) {
-                console.error('Error al copiar la URL: ', err);
-            });
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Compartir URL',
+                    text: 'Echa un vistazo a esta URL:',
+                    url: url
+                }).then(() => {
+                    console.log('Compartido con éxito');
+                }).catch((error) => {
+                    console.error('Error al compartir:', error);
+                });
+            } else {
+                alert('La función de compartir no está disponible en este dispositivo.');
+            }
         }
 
         function downloadVCard() {

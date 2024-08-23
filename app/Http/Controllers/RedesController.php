@@ -25,6 +25,7 @@ class RedesController extends Controller
             'facebook' => 2,
             'youtube' => 3,
             'twitter' => 4,
+            'tiktok' => 5,
         ];
 
         foreach ($redIds as $key => $redId) {
