@@ -17,8 +17,12 @@
                     <div class=" w-full">
                         <div class=" flex justify-center">
                             <div class="flex justify-around">
-                                <div class=" flex justify-center overflow-hidden ">
-                                    <img src="">
+                                <div class="flex justify-center overflow-hidden" style="width: 100%; height: 10rem">
+                                    @if($profilePicture)
+                                    <img src="{{ asset('storage/' . $profilePicture) }}" alt="Profile Picture" />
+                                    @else
+                                    <p>No profile picture available</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

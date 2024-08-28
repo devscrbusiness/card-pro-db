@@ -19,7 +19,12 @@ class CompartirControler extends Controller
 
         $servicios = ServicioUser::where('user_id', $user->id)->get();
 
-        return view('compartir', compact('user', 'redes', 'servicios'));
+        return view('compartir', [
+            'user' => $user,
+            'redes' => $redes,
+            'servicios' => $servicios,
+            'profilePicture' => $user->photos ? $user->photos->profile_picture : null
+        ]);
     }
 
     public function nosotros($login_token)
@@ -27,7 +32,16 @@ class CompartirControler extends Controller
         try {
             $user = User::where('login_token', $login_token)->firstOrFail();
 
-            return view('nosotros.compartir', compact('user'));
+            $redes = RedesUser::where('user_id', $user->id)->get();
+
+            $servicios = ServicioUser::where('user_id', $user->id)->get();
+
+            return view('nosotros.compartir', [
+                'user' => $user,
+                'redes' => $redes,
+                'servicios' => $servicios,
+                'profilePicture' => $user->photos ? $user->photos->profile_picture : null
+            ]);
         } catch (\Throwable $th) {
             return redirect('/');
         }
@@ -37,6 +51,14 @@ class CompartirControler extends Controller
     {
         $user = User::where('login_token', $token)->firstOrFail();
         $redes = RedesUser::where('user_id', $user->id)->get();
+        $servicios = ServicioUser::where('user_id', $user->id)->get();
+
+        return view('redes.compartir', [
+            'user' => $user,
+            'redes' => $redes,
+            'servicios' => $servicios,
+            'profilePicture' => $user->photos ? $user->photos->profile_picture : null
+        ]);
 
         return view('redes.compartir', compact('user', 'redes'));
     }
@@ -45,9 +67,17 @@ class CompartirControler extends Controller
     {
         try {
             $user = User::where('login_token', $token)->firstOrFail();
+            $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
 
-            return view('servicios.compartir', compact('servicios', 'user'));
+            $servicios = ServicioUser::where('user_id', $user->id)->get();
+
+            return view('servicios.compartir', [
+                'user' => $user,
+                'redes' => $redes,
+                'servicios' => $servicios,
+                'profilePicture' => $user->photos ? $user->photos->profile_picture : null
+            ]);
         } catch (\Throwable $th) {
             return redirect('/');
         }

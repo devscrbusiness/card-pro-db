@@ -43,9 +43,17 @@
 
         <div>
             <x-input-label for="profile_picture" :value="__('Profile Picture')" />
-            <x-file-input id="profile_picture" name="profile_picture" class="mt-1 block w-full" />
+
+            @if ($user->photos && $user->photos->profile_picture)
+            <div class="mt-2">
+                <img src="{{ asset('storage/' . $user->photos->profile_picture) }}" alt="{{ $user->name }}'s Profile Picture" class="h-20 w-20 rounded-full object-cover">
+            </div>
+            @endif
+
+            <x-file-input id="profile_picture" name="profile_picture" class="mt-4 block w-full" />
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>
+
 
         <div>
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
