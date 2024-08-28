@@ -1,26 +1,29 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Nosotros') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+    <div class="p-6 items-center justify-center flex">
+        <a href="/">
+            <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
+        </a>
+    </div>
+    <div class="my-auto items-center justify-center flex">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
+            <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
                 <div class="max-w-xl">
-                    <section class="">
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900 my-auto items-center flex justify-center">
-                                {{ $user->nosotros->nombre_de_la_empresa ?? 'No hay nombre disponible' }}
-                            </h2>
 
-                        </header>
+                    <header class="mt-6">
+                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0 178 255);">
+                            {{ 'ACERCA DE MI' }}
+                        </h2>
 
-                        <div class="bg-white my-auto items-center flex justify-center mt-6">
-                            {{ $user->nosotros->texto ?? 'No hay texto disponible' }}
-                        </div>
-                    </section>
+                        <h2 class="text-lg font-medium text-black my-auto items-center flex justify-center">
+                            {{ $user->nosotros->nombre_de_la_empresa ?? 'No hay nombre disponible' }}
+                        </h2>
+
+                    </header>
+
+                    <div class="text-black my-auto items-center flex justify-center p-6">
+                        {{ $user->nosotros->texto ?? 'No hay texto disponible' }}
+                    </div>
+
                 </div>
                 @include('layouts.navigation-user')
             </div>

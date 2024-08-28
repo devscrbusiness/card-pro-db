@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\UserPhoto;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -26,13 +28,39 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validated = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Manejo del archivo si se ha subido
+        if ($request->hasFile('profile_picture')) {
+            // Elimina el archivo antiguo si existe
+            if ($user->photos && $user->photos->profile_picture) {
+                Storage::disk('public')->delete($user->photos->profile_picture);
+            }
+
+            // Guarda el nuevo archivo
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $validated['profile_picture'] = $path;
         }
 
-        $request->user()->save();
+        // Actualiza el usuario con los datos validados
+        $user->fill($validated);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        // Asegúrate de actualizar el modelo UserPhoto si es necesario
+        if ($user->photos) {
+            $user->photos->update(['profile_picture' => $validated['profile_picture']]);
+        } else {
+            UserPhoto::create([
+                'user_id' => $user->id,
+                'profile_picture' => $validated['profile_picture'],
+            ]);
+        }
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(NosotrosText::class, 'user_id', 'id');
     }
+
+    public function servicios()
+    {
+        return $this->hasMany(ServicioUser::class, 'user_id', 'id');
+    }
 }
