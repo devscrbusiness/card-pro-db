@@ -48,16 +48,21 @@ class ServicioUserController extends Controller
         $userId = Auth::user()->id;
         $request->validate([
             'servicio' => 'required|string|max:255',
+            'servicio_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $servicioCreado = ServicioUser::create([
+        $servicioPicturePath = null;
+        if ($request->hasFile('servicio_picture')) {
+            $servicioPicturePath = $request->file('servicio_picture')->store('servicio_pictures', 'public');
+        }
+
+        ServicioUser::create([
             'user_id' => $userId,
             'servicio' => $request->input('servicio'),
+            'servicio_picture' => $servicioPicturePath,
         ]);
 
-        $servicios = ServicioUser::where('user_id', $userId)->get();
-
-        return view('servicios.index', compact('servicios'));
+        return redirect()->route('servicios.index');
     }
 
     /**
@@ -100,6 +105,14 @@ class ServicioUserController extends Controller
 
         if (!$servicio) {
             return response()->json(['message' => 'Servicio no encontrado'], 404);
+        }
+
+        if ($servicio->servicio_picture) {
+            $rutaFoto = public_path('storage/' . $servicio->servicio_picture);
+
+            if (file_exists($rutaFoto)) {
+                unlink($rutaFoto);
+            }
         }
 
         $servicio->delete();

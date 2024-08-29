@@ -16,23 +16,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+<body class="font-sans antialiased" style="top: 0px; background-image: url('{{ asset('storage/background_picture/fondo-100.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="min-h-screen">
         @if(Auth::check())
         @include('layouts.navigation')
         @endif
 
         <!-- Page Heading -->
         @isset($header)
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <header class="shadow">
+            <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
         </header>
         @endisset
 
         <!-- Page Content -->
-        <main>
+        <main style="top: 0px;">
             {{ $slot }}
         </main>
     </div>

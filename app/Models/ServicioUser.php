@@ -11,5 +11,5 @@ class ServicioUser extends Model
 
     protected $table = 'servicios_user';
 
-    protected $fillable = ['user_id', 'servicio'];
+    protected $fillable = ['user_id', 'servicio', 'servicio_picture'];
 }
