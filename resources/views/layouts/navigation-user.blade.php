@@ -69,6 +69,30 @@
                 <strong class="mt-2 mx-auto " style="color: #29abe2;">Sobre Mi</strong>
             </a>
             @endif
+            @if ($user->ubicacion)
+            <a class="text-black" href="{{ route('ubicacion.compartir', ['token' => $user->login_token]) }}" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.15 34.8" width="40px" height="35px">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: #29abe2;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 1.8px;
+                            }
+                        </style>
+                    </defs>
+                    <g id="Capa_2" data-name="Capa 2">
+                        <g id="Capa_1-2" data-name="Capa 1">
+                            <path class="cls-1" d="M13.06.9a11.65,11.65,0,0,1,6.13,1.7,12.45,12.45,0,0,1,4.43,4.57,12.26,12.26,0,0,1,1.63,6.18,16.93,16.93,0,0,1-2,7.31c-1.3,2.06-2.8,4.19-4.48,6.39s-3,3.9-4,5.09L13.21,33.9c-.18-.15-.42-.38-.73-.69s-.91-1-1.8-1.92S8.93,29.36,8.1,28.37s-1.76-2.19-2.79-3.63A48.27,48.27,0,0,1,2.6,20.55,17.19,17.19,0,0,1,.9,13.49a12.4,12.4,0,0,1,1-4.81,13.13,13.13,0,0,1,2.6-4A12.24,12.24,0,0,1,8.34,1.92,11.36,11.36,0,0,1,13.06.9Z" />
+                            <path class="cls-1" d="M17.27,7.69A5.57,5.57,0,0,0,13.18,6a5.61,5.61,0,0,0-4.09,1.7,5.62,5.62,0,0,0-1.7,4.11,5.53,5.53,0,0,0,1.7,4.08,5.6,5.6,0,0,0,4.09,1.69,5.56,5.56,0,0,0,4.09-1.69A5.53,5.53,0,0,0,19,11.8,5.62,5.62,0,0,0,17.27,7.69Z" />
+                        </g>
+                    </g>
+                </svg>
+                <strong class="mt-2 mx-auto " style="color: #29abe2;">Ubicación</strong>
+            </a>
+            @endif
             @if ($user->servicios)
             <a class="text-black" href="{{ route('servicios.compartir', ['token' => $user->login_token]) }}" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.4 34.8" width="40px" height="35px">

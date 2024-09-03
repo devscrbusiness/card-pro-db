@@ -26,6 +26,11 @@
                         {{ __('Servicios') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('ubicacion.index')" :active="request()->routeIs('ubicacion.index')">
+                        {{ __('Ubicacion') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -100,6 +105,16 @@
                 {{ __('Nosotros') }}
             </x-responsive-nav-link>
         </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <x-responsive-nav-link :href="route('servicios.index')" :active="request()->routeIs('servicios.index')">
+                {{ __('Servicios') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+            <x-responsive-nav-link :href="route('ubicacion.index')" :active="request()->routeIs('ubicacion.index')">
+                {{ __('Ubicacion') }}
+            </x-responsive-nav-link>
+        </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -136,6 +151,18 @@
 
                 <x-responsive-nav-link :href="route('redes.index')">
                     {{ __('Redes') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('nosotros.index')">
+                    {{ __('Nosotros') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('servicios.index')">
+                    {{ __('Servicios') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="route('ubicacion.index')">
+                    {{ __('Ubicacion') }}
                 </x-responsive-nav-link>
             </div>
         </div>

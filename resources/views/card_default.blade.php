@@ -1,5 +1,10 @@
 <x-app-layout>
     <div class="items-center">
+        @if(!Auth::check())
+        <a class="p-6 items-center justify-center flex" href="/">
+            <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
+        </a>
+        @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
             <div class=" overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="">
@@ -34,7 +39,7 @@
                     </div>
                     <div class="flex justify-center">
                         <!-- Contacto -->
-                        <div class="flex justify-center text-sm mt-6 gap-6">
+                        <div class="flex justify-center text-sm mt-6 " style="gap: 0.75rem">
                             <div class="flex flex-col justify-center">
                                 <a class="rounded-lg flex justify-center" href="https://wa.me/{{ $user->telefono }}" style="background-color: rgb(37 211 102); padding: 0.5rem; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); ">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-whatsapp " viewBox="0 0 16 16">

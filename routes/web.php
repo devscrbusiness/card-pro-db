@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\CompartirControler;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NosotrosTextController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -61,23 +62,28 @@ Route::middleware('auth')->group(function () {
     Route::put('servicios/{id}', [ServicioUserController::class, 'update'])->name('servicios.update');
     Route::delete('servicios/{id}', [ServicioUserController::class, 'destroy'])->name('servicios.destroy');
     Route::get('servicios-compartir/{token}', [CompartirControler::class, 'servicios'])->name('servicios.compartir');
+
+    // Ubicacion
+    Route::get('ubicacion', [LocationController::class, 'index'])->name('ubicacion.index');
+    Route::post('ubicacion', [LocationController::class, 'updateLocation'])->name('update.location');
 });
 
-Route::middleware('guest')->group(function () {
-    // Compartir
-    Route::get('/compartir/{login_token}', [CompartirControler::class, 'show'])->name('compartir.show');
+// Compartir
+Route::get('/compartir/{login_token}', [CompartirControler::class, 'show'])->name('compartir.show');
 
-    // QR Code
-    Route::get('/qr-compartir/{token}', [CompartirControler::class, 'show'])->name('qr.compartir');
+// QR Code
+Route::get('/qr-compartir/{token}', [CompartirControler::class, 'show'])->name('qr.compartir');
 
-    // Nosotros
-    Route::get('/nosotros/{token}', [CompartirControler::class, 'nosotros'])->name('nosotros.compartir');
+// Nosotros
+Route::get('/nosotros/{token}', [CompartirControler::class, 'nosotros'])->name('nosotros.compartir');
 
-    // Redes
-    Route::get('/redes/{token}', [CompartirControler::class, 'redes'])->name('redes.compartir');
+// Redes
+Route::get('/redes/{token}', [CompartirControler::class, 'redes'])->name('redes.compartir');
 
-    // Servicios
-    Route::get('servicios-compartir/{token}', [CompartirControler::class, 'servicios'])->name('servicios.compartir');
-});
+// Servicios
+Route::get('/servicios-compartir/{token}', [CompartirControler::class, 'servicios'])->name('servicios.compartir');
+
+// Ubicacion
+Route::get('/ubicacion/{token}', [CompartirControler::class, 'ubicacion'])->name('ubicacion.compartir');
 
 require __DIR__ . '/auth.php';

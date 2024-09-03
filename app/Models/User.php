@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ServicioUser::class, 'user_id', 'id');
     }
+
+    public function ubicacion()
+    {
+        return $this->hasOne(LocationUser::class, 'user_id', 'id');
+    }
 }
