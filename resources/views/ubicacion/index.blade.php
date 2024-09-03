@@ -65,7 +65,7 @@
                     });
                 }
 
-                // Establece los valores en los inputs ocultos
+
                 document.getElementById('latitude').value = location.lat();
                 document.getElementById('longitude').value = location.lng();
             }
