@@ -6,6 +6,7 @@ use App\Models\NosotrosText;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NosotrosTextController extends Controller
 {
@@ -18,7 +19,7 @@ class NosotrosTextController extends Controller
     {
         $user = Auth::user();
         $nosotrosTexts = NosotrosText::where('user_id', $user->id)->first();
-        return view('nosotros.index', compact('nosotrosTexts'));
+        return view('nosotros.index', compact('nosotrosTexts', 'user'));
     }
 
     /**
@@ -31,13 +32,23 @@ class NosotrosTextController extends Controller
     {
         $user = Auth::user();
 
+        if ($request->hasFile('photo_de_la_empresa')) {
+            if ($user->nosotros && $user->nosotros->photo_de_la_empresa) {
+                Storage::disk('public')->delete($user->nosotros->photo_de_la_empresa);
+            }
+
+            $path = $request->file('photo_de_la_empresa')->store('photo_de_la_empresa', 'public');
+        } else {
+            $path = null;
+        }
+
         NosotrosText::updateOrCreate(
             [
                 'user_id' => $user->id,
             ],
             [
                 'texto' => $request->input('nosotros'),
-                'nombre_de_la_empresa' => $request->input('nombre_empresa'),
+                'photo_de_la_empresa' => $path,
             ]
         );
 

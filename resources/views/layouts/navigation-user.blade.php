@@ -1,8 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 rounded-lg flex justify-center items-center my-auto">
     <div class="flex justify-center bg-white rounded-lg">
-        <div class="flex justify-between text-sm p-6 gap-6">
+        <div class="flex justify-between text-sm p-6" style="white-space: nowrap;">
             @if ($user->login_token)
-            <a href="{{ route('compartir.show', ['login_token' => $user->login_token]) }}" target="_blank">
+            <a href="{{ route('compartir.show', ['login_token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.84 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
@@ -28,11 +28,11 @@
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto " style="color: #29abe2;">Contacto</strong>
+                <strong class="mt-2 mx-auto" style="color: rgb(0, 117, 190);">Contacto</strong>
             </a>
             @endif
             @if($user->nosotros)
-            <a class="text-black " href="{{ route('nosotros.compartir', ['token' => $user->login_token]) }}" target="_blank">
+            <a class="text-black" href="{{ route('nosotros.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.68 36.8" width="40px" height="35px">
                     <defs>
                         <style>
@@ -60,17 +60,17 @@
                             <path class="cls-1" d="M17.91,35.6h0a1.57,1.57,0,0,1-.36-2.2l2.16-3a1.58,1.58,0,0,1,2.55,1.85l-2.15,3A1.58,1.58,0,0,1,17.91,35.6Z" />
                             <path class="cls-1" d="M14.73,34.61h0a1.58,1.58,0,0,1-.35-2.2l3.39-4.69a1.58,1.58,0,1,1,2.55,1.85l-3.39,4.68A1.57,1.57,0,0,1,14.73,34.61Z" />
                             <path class="cls-1" d="M23.33,26.2,27.7,30a1.58,1.58,0,1,1-2.07,2.38l-4.37-3.79" />
-                            <path class="cls-1" d="M22.06,29.27l2.78,2.41a1.58,1.58,0,1,1-2.07,2.39l-1.09-1" />
-                            <path class="cls-1" d="M28.26,22.13,31,24.54A1.58,1.58,0,0,1,29,26.92l-2.78-2.41" />
-                            <path class="cls-1" d="M25.4,23.82l4.36,3.79A1.57,1.57,0,1,1,27.7,30L23.33,26.2" />
+                            <path class="cls-1" d="M22.06,29.27l2.78,2.41a1.58,1.58,0,1,1-2.05,2.38l-2.78-2.41" />
+                            <path class="cls-1" d="M14.21,19.77c.78,0,3.24-.94,5.16-2.56s3.35-3.57,3.36-3.58" />
+                            <path class="cls-1" d="M12.26,20.91s.85-.82,2.41-2.2,3.67-2.5,5.29-3.5,4.28-2,5.81-3.19c.77-.55,1.68-.76,2.59-.49" />
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto " style="color: #29abe2;">Sobre Mi</strong>
+                <strong class="mt-2 mx-auto" style="color: rgb(0, 117, 190);">Nosotros</strong>
             </a>
             @endif
             @if ($user->ubicacion)
-            <a class="text-black" href="{{ route('ubicacion.compartir', ['token' => $user->login_token]) }}" target="_blank">
+            <a class="text-black" href="{{ route('ubicacion.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.15 34.8" width="40px" height="35px">
                     <defs>
                         <style>
@@ -90,11 +90,11 @@
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto " style="color: #29abe2;">Ubicación</strong>
+                <strong class="mt-2 mx-auto " style="color: rgb(0, 117, 190);">Dirección</strong>
             </a>
             @endif
             @if ($user->servicios)
-            <a class="text-black" href="{{ route('servicios.compartir', ['token' => $user->login_token]) }}" target="_blank">
+            <a class="text-black" href="{{ route('servicios.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.4 34.8" width="40px" height="35px">
                     <defs>
                         <style>
@@ -123,7 +123,7 @@
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto " style="color: #29abe2;">Servicios</strong>
+                <strong class="mt-2 mx-auto " style="color: rgb(0, 117, 190);">Servicios</strong>
             </a>
             @endif
             @if ($user->redes)
@@ -151,7 +151,7 @@
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto " style="color: #29abe2;">Redes</strong>
+                <strong class="mt-2 mx-auto " style="color: rgb(0, 117, 190);">Redes</strong>
             </a>
             @endif
         </div>

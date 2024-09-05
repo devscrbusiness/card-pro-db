@@ -13,9 +13,9 @@
                     <div class=" w-full">
                         <div class=" flex justify-center">
                             <div class="flex justify-around">
-                                <div class="flex justify-center rounded-full overflow-hidden" style="border-width: 5px; border-color: rgb(0 150 214); width: 10rem; height: 10rem">
+                                <div class="flex justify-center rounded-full overflow-hidden">
                                     @if($profilePicture)
-                                    <img src="{{ asset('storage/' . $profilePicture) }}" alt="Profile Picture" />
+                                    <img src="{{ asset('storage/' . $user->photos->profile_picture) }}" alt="{{ $user->name }}'s Profile Picture" class="h-20 w-20 rounded-full object-cover" style="border-width: 5px; border-color: rgb(0, 134, 201); width: 10rem; height: 10rem">
                                     @else
                                     <p>No profile picture available</p>
                                     @endif
@@ -57,8 +57,8 @@
                                 <span class="mt-2 text-white flex justify-center">SMS</span>
                             </div>
                             <div class="flex flex-col justify-center">
-                                <a href="mailto:{{ $user->email }}" class=" rounded-lg " style="background-color: rgb(0 106 255); padding: 0.5rem; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); ">
-                                    <svg xmlns=" http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-12">
+                                <a href="mailto:{{ $user->email }}" class="rounded-lg" style="background-color: rgb(0 106 255); padding: 0.5rem; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-12">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                                     </svg>
                                 </a>
@@ -93,7 +93,7 @@
                                     style="background-color: rgb(103 232 249);"
                                     onclick="downloadVCard()">
                                     <span class="flex justify-center items-center">
-                                        <div class="flex flex-col items-center " style="color: rgb(0 150 214);">
+                                        <div class="flex flex-col items-center " style="color: rgb(0, 117, 190);">
                                             <strong style="display: block;">Guardar</strong>
                                             <strong style="display: block;">contacto</strong>
                                         </div>

@@ -15,21 +15,21 @@
                             </p>
                         </header>
 
-                        <form method="post" action="{{ route('nosotros.store') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('nosotros.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 
                             <div>
-                                <x-input-label for="nombre_empresa" :value="__('Nombre de la empresa')" />
-                                <x-text-input
-                                    id="nombre_empresa"
-                                    name="nombre_empresa"
-                                    type="text"
-                                    class="mt-1 block w-full"
-                                    value="{{ $nosotrosTexts->nombre_de_la_empresa ?? '' }}"
-                                    autofocus
-                                    autocomplete="nombre_empresa" />
-                                <x-input-error class="mt-2" :messages="$errors->get('nombre_empresa')" />
+                                <x-input-label for="photo_de_la_empresa" :value="__('Foto de la empresa')" />
+
+                                @if ($user->nosotros && $user->nosotros->photo_de_la_empresa)
+                                <div class="mt-2">
+                                    <img src="{{ asset('storage/' . $user->nosotros->photo_de_la_empresa) }}" alt="Foto de Perfil de {{ $user->name }}" class="h-20 object-cover">
+                                </div>
+                                @endif
+
+                                <x-file-input id="photo_de_la_empresa" name="photo_de_la_empresa" class="mt-4 block w-full" />
+                                <x-input-error class="mt-2" :messages="$errors->get('photo_de_la_empresa')" />
                             </div>
 
                             <div>

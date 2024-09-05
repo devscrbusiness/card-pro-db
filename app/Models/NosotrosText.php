@@ -13,6 +13,6 @@ class NosotrosText extends Model
     protected $fillable = [
         'user_id',
         'texto',
-        'nombre_de_la_empresa',
+        'photo_de_la_empresa',
     ];
 }

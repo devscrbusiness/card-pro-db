@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="p-6 items-center justify-center flex">
-        <a href="/">
-            <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-        </a>
-    </div>
+    @if(!Auth::check())
+    <a class="p-6 items-center justify-center flex" href="/">
+        <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
+    </a>
+    @endif
     <div class="my-auto items-center justify-center flex">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
             <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
@@ -14,9 +14,9 @@
                             {{ 'ACERCA DE MI' }}
                         </h2>
 
-                        <h2 class="text-lg font-medium text-black my-auto items-center flex justify-center">
-                            {{ $user->nosotros->nombre_de_la_empresa ?? 'No hay nombre disponible' }}
-                        </h2>
+                        <div class="mt-2 flex justify-center">
+                            <img src="{{ asset('storage/' . $user->nosotros->photo_de_la_empresa) }}" alt="Foto de Perfil de {{ $user->name }}" class="object-cover">
+                        </div>
 
                     </header>
 

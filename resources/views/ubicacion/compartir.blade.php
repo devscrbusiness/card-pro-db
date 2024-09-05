@@ -1,9 +1,9 @@
 <x-app-layout>
-    <div class="p-6 items-center justify-center flex">
-        <a href="/">
-            <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-        </a>
-    </div>
+    @if(!Auth::check())
+    <a class="p-6 items-center justify-center flex" href="/">
+        <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
+    </a>
+    @endif
     <div class="my-auto items-center justify-center flex">
         <div class="max-w-7xl sm:px-6 lg:px-8" style="height: 100vh; width: 100vh">
             <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
