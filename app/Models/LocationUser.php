@@ -15,6 +15,7 @@ class LocationUser extends Model
         'user_id',
         'latitude',
         'longitude',
+        'detalle',
     ];
 
     public function user()

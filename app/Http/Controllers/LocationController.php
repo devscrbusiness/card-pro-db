@@ -21,11 +21,16 @@ class LocationController extends Controller
         $request->validate([
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
+            'detalle' => 'nullable|string|max:255',
         ]);
 
         LocationUser::updateOrCreate(
             ['user_id' => Auth::user()->id],
-            ['latitude' => $request->latitude, 'longitude' => $request->longitude]
+            [
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'detalle' => $request->detalle,
+            ]
         );
 
         return redirect()->back()->with('success', 'Ubicación actualizada');

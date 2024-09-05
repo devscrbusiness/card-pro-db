@@ -90,7 +90,7 @@
                                 <button
                                     class="p-button p-component p-button-raised p-button-text border-none text-lg shadow-lg rounded-lg p-2"
                                     type="button"
-                                    style="background-color: rgb(103 232 249);"
+                                    style="background-color: rgb(0, 246, 255);"
                                     onclick="downloadVCard()">
                                     <span class="flex justify-center items-center">
                                         <div class="flex flex-col items-center " style="color: rgb(0, 117, 190);">
@@ -142,7 +142,7 @@
                                 <div class="flex justify-center ">
                                     <button id="shareButton" class="p-button p-component p-button-raised p-button-text text-md shadow-lg rounded-lg p-2" type="button" onclick="shareContent()" style="color: rgb(0 106 255); border-width: 3px; border-color: rgb(103 232 249);">
                                         <span class="flex items-center text-black">
-                                            <span class="" style="color: rgb(103 232 249); border-color: rgb(103 232 249);">
+                                            <span class="" style="color: rgb(103 232 249); border-color: rgb(0, 246, 255);">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="width: 50px; height: 50px; vertical-align: -0.125em; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-icon="mdi:share-variant">
                                                     <path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3a3 3 0 0 0-3-3a3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66c0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path>
                                                 </svg>

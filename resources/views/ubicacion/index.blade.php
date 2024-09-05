@@ -16,11 +16,18 @@
 
                         <form method="post" action="{{ route('update.location') }}" class="mt-6 space-y-6">
                             @csrf
+                            @method('POST')
 
                             <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
 
                             <input type="hidden" id="latitude" name="latitude" value="{{ $location->latitude ?? '' }}">
                             <input type="hidden" id="longitude" name="longitude" value="{{ $location->longitude ?? '' }}">
+
+                            <div>
+                                <x-input-label for="detalle" :value="__('Descripción')" />
+                                <x-text-input id="detalle" name="detalle" type="text" class="mt-1 block w-full" value="{{ $location->detalle ?? '' }}" />
+                                <x-input-error class="mt-2" :messages="$errors->get('detalle')" />
+                            </div>
 
                             <x-primary-button>{{ __('Guardar ubicación') }}</x-primary-button>
                         </form>
