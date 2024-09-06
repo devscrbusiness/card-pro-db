@@ -33,7 +33,7 @@
             @endif
             @if($user->nosotros)
             <a class="text-black" href="{{ route('nosotros.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.68 36.8" width="40px" height="35px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.68 36.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
                             .cls-1 {
@@ -66,12 +66,12 @@
                         </g>
                     </g>
                 </svg>
-                <strong class="mt-2 mx-auto" style="color: rgb(0, 117, 190);">Nosotros</strong>
+                <strong class="mt-2 mx-auto" style="color: rgb(0, 117, 190);">Sobre Mi</strong>
             </a>
             @endif
             @if ($user->ubicacion)
             <a class="text-black" href="{{ route('ubicacion.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.15 34.8" width="40px" height="35px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.15 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
                             .cls-1 {
@@ -95,7 +95,7 @@
             @endif
             @if ($user->servicios)
             <a class="text-black" href="{{ route('servicios.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.4 34.8" width="40px" height="35px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.4 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
                             .cls-1 {
@@ -128,7 +128,7 @@
             @endif
             @if ($user->redes)
             <a class="text-black" href="{{ route('redes.compartir', ['token' => $user->login_token]) }}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.84 34.8" width="40px" height="35px">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.84 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
                             .cls-1 {

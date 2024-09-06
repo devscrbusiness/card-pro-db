@@ -10,7 +10,7 @@
                 <div class="max-w-xl">
 
                     <header class="mt-6">
-                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0 178 255);">
+                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
                             {{ 'ACERCA DE MI' }}
                         </h2>
 

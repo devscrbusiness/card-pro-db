@@ -152,6 +152,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="mt-2 flex justify-center">
+                            <img src="{{ asset('storage/' . $user->nosotros->photo_de_la_empresa) }}" alt="Foto de Perfil de {{ $user->name }}" class="object-cover rounded-lg">
+                        </div>
                         <div class="flex justify-center mt-6">
                             @include('layouts.navigation-user')
                         </div>

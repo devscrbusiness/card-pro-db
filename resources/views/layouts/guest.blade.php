@@ -16,7 +16,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-gray-900 antialiased" style="top: 0px; background-image: url('{{ asset('storage/background_picture/fondo-100.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">>
+<body class="font-sans text-gray-900 antialiased" style="top: 0px; background-image: url('{{ asset('storage/background_picture/fondo-100.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
         <div>
             <a href="/">

@@ -8,7 +8,7 @@
         <div class="max-w-7xl sm:px-6 lg:px-8" style="width: 100vh">
             <div class="overflow-hidden shadow-sm rounded-lg bg-white">
                 <header class="mt-6">
-                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0 178 255);">
+                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
                         {{ 'UBICACION' }}
                     </h2>
                 </header>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex-col justify-center mt-4 mx-auto">
                     <div class="flex justify-center">
-                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0 178 255);">
+                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
                             {{ 'OFICINA' }}
                         </h2>
                     </div>

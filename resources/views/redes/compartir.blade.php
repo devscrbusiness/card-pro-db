@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
             <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
                 <header class="mt-6">
-                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0 178 255);">
+                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
                         {{ 'REDES' }}
                     </h2>
                 </header>
