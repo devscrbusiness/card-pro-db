@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ServicioUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File; 
 
 class ServicioUserController extends Controller
 {
@@ -65,6 +66,21 @@ class ServicioUserController extends Controller
         return redirect()->route('servicios.index');
     }
 
+    public function edit($id)
+    {
+        $user = Auth::user();
+        $servicios = ServicioUser::where('user_id', $user->id)->get();
+        
+        $servicioID = ServicioUser::find($id);
+        
+        if (!$servicioID) {
+            return response()->json(['message' => 'Servicio no encontrado'], 404);
+        }
+        
+        return view('servicios.index', compact('servicios', 'servicioID'));
+        /* return response()->json($servicio); */
+    }
+
     /**
      * Actualizar un servicio existente.
      *
@@ -85,12 +101,21 @@ class ServicioUserController extends Controller
             'servicio' => 'required|string|max:255',
         ]);
 
+        if ($request->hasFile('servicio_picture')) {
+            $servicioPicturePath = $request->file('servicio_picture')->store('servicio_pictures', 'public');
+            File::delete('storage/'.$servicio->servicio_picture);
+        }
+        else {
+            $servicioPicturePath = $servicio->servicio_picture;
+        }
+
         $servicio->update([
             'user_id' => $userId,
             'servicio' => $request->input('servicio'),
+            'servicio_picture' => $servicioPicturePath,
         ]);
 
-        return response()->json($servicio);
+        return redirect()->route('servicios.index');
     }
 
     /**

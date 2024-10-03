@@ -29,7 +29,6 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $servicio->servicio }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 " style="max-width: 10rem"><img src="{{ asset('storage/' . $servicio->servicio_picture) }}"></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a class="text-blue-600 hover:text-blue-900" href="{{ route('servicios.edit', $servicio->id) }}">Editar</a>
                                         <form action="{{ route('servicios.destroy', $servicio->id) }}" method="POST" class="inline">
                                             @csrf
                                             @method('DELETE')
@@ -57,17 +56,17 @@
                                 {{ isset($servicio) ? 'Edita la información del servicio' : 'Crea un nuevo servicio' }}
                             </p>
                         </header>
-
-                        @if (isset($servicioID))
-                        <form method="post" action="{{ route('servicios.update', $servicioID->id) }}" class="mt-6 space-y-6" enctype="multipart/form-data">
+                        @if (isset($servicio))
+                        <form method="post" action="{{ route('servicios.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
+                            @method('PATCH')
+                        @endif
+
                         @else
 
                         <form method="post" action="{{ route('servicios.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
-                        @endif
 
                             <div>
                                 <x-input-label for="servicio" :value="__('Servicio')" />
@@ -76,17 +75,11 @@
                                     name="servicio"
                                     type="text"
                                     class="mt-1 block w-full"
-                                    value="{{$servicioID->servicio ?? ''}}"
+                                    value=""
                                     autofocus
                                     autocomplete="servicio" />
                                 <x-input-error class="mt-2" :messages="$errors->get('servicio')" />
                             </div>
-
-                            @if (isset($servicioID) && $servicioID->servicio_picture)
-                            <div class="mt-2">
-                                <img src="{{ asset('storage/' . $servicioID->servicio_picture) }}" alt="Foto de servicio" class="h-20 w-20 rounded-full object-cover">
-                            </div>
-                            @endif
 
                             <div>
                                 <x-input-label for="servicio_picture" :value="__('Imagen del Servicio')" />
@@ -106,11 +99,17 @@
 </x-app-layout>
 
 
-{{-- <div>
+
+
+<div>
     <x-input-label for="profile_picture" :value="__('Foto de Perfil')" />
 
-
+    @if ($user->photos && $user->photos->profile_picture)
+    <div class="mt-2">
+        <img src="{{ asset('storage/' . $user->photos->profile_picture) }}" alt="Foto de Perfil de {{ $user->name }}" class="h-20 w-20 rounded-full object-cover">
+    </div>
+    @endif
 
     <x-file-input id="profile_picture" name="profile_picture" class="mt-4 block w-full" />
     <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
-</div> --}}
+</div>

@@ -1,16 +1,14 @@
 <x-app-layout>
     @if(!Auth::check())
-    <a class="p-6 items-center justify-center flex" href="/">
-        <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-    </a>
+        @include('layouts.navigation-guest')
     @endif
     <div class="my-auto items-center justify-center flex">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
-            <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 min-h-screen">
+            <div class="flex-1 shadow-sm rounded-lg bg-white">
                 <div class="max-w-xl">
 
                     <header class="mt-6">
-                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
+                        <h2 class="text-lg my-auto items-center flex justify-center barlow-extrabold" style="color: rgb(0, 117, 190);">
                             {{ 'ACERCA DE MI' }}
                         </h2>
 
@@ -20,13 +18,16 @@
 
                     </header>
 
-                    <div class="text-black my-auto items-center flex justify-center p-6">
+                    <div class="text-black my-auto items-center flex justify-center p-6 barlow-regular">
                         {{ $user->nosotros->texto ?? 'No hay texto disponible' }}
                     </div>
 
                 </div>
-                @include('layouts.navigation-user')
+                
             </div>
         </div>
+    </div>
+    <div class="sticky mt-5 bottom-5 inset-x-0 my-3 mb-6 sm:mb-5 mx-auto w-screen sm:w-fit">
+        @include('layouts.navigation-user')
     </div>
 </x-app-layout>

@@ -1,14 +1,12 @@
 <x-app-layout>
+
+    @if(!Auth::check())
+    @include('layouts.navigation-guest')
+    @endif
     <div class="items-center">
-        @if(!Auth::check())
-        <a class="p-6 items-center justify-center flex" href="/">
-            <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-        </a>
-        @endif
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" style="height: 100vh">
-            <div class=" overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:min-h-screen">
+            <div class="shadow-sm sm:rounded-lg">
                 <div class="">
-                    <div class="h-20"></div>
                     <div class="h-12"></div>
                     <div class=" w-full">
                         <div class=" flex justify-center">
@@ -17,7 +15,7 @@
                                     @if($profilePicture)
                                     <img src="{{ asset('storage/' . $user->photos->profile_picture) }}" alt="{{ $user->name }}'s Profile Picture" class="h-20 w-20 rounded-full object-cover" style="border-width: 5px; border-color: rgb(0, 134, 201); width: 10rem; height: 10rem">
                                     @else
-                                    <p>No profile picture available</p>
+                                    <p class="barlow-medium">No profile picture available</p>
                                     @endif
                                 </div>
                             </div>
@@ -25,21 +23,21 @@
                     </div>
                 </div>
 
-                <div class="p-6 text-gray-900 mt-4 flex-col">
+                <div class="p-6 text-gray-900 flex-col">
                     <div class="flex-col justify-center">
                         <!-- Nombre y apellido -->
-                        <div class="flex justify-center text-xl text-white">
+                        <div class="flex justify-center text-white barlow-medium" style="font-size: 1.5rem; line-height: 1.75rem">
                             {{ $user->name }} - {{ $user->last_name }}
                         </div>
 
                         <!-- Ocupación -->
-                        <strong class="flex justify-center text-md text-white">
+                        <strong class="flex justify-center text-md text-white barlow-bold">
                             {{ $user->ocupacion }}
                         </strong>
                     </div>
                     <div class="flex justify-center">
                         <!-- Contacto -->
-                        <div class="flex justify-center text-sm mt-6 " style="gap: 0.75rem">
+                        <div class="flex justify-center text-sm mt-6 barlow-semibold" style="gap: 0.75rem">
                             <div class="flex flex-col justify-center">
                                 <a class="rounded-lg flex justify-center" href="https://wa.me/{{ $user->telefono }}" style="background-color: rgb(37 211 102); padding: 0.5rem; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); ">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-whatsapp " viewBox="0 0 16 16">
@@ -88,14 +86,15 @@
                         <div class="flex gap-2 items-center justify-center " style="margin-top: 2.5rem">
                             <div class="flex justify-center">
                                 <button
-                                    class="p-button p-component p-button-raised p-button-text border-none text-lg shadow-lg rounded-lg p-2"
+                                    class="p-button p-component p-button-raised p-button-text border-none text-lg shadow-lg rounded-lg px-4 py-1"
                                     type="button"
                                     style="background-color: rgb(0, 246, 255);"
                                     onclick="downloadVCard()">
-                                    <span class="flex justify-center items-center">
-                                        <div class="flex flex-col items-center " style="color: rgb(0, 117, 190);">
-                                            <strong style="display: block;">Guardar</strong>
-                                            <strong style="display: block;">contacto</strong>
+                                    <span class="flex justify-center items-center barlow-medium">
+                                        <div class="flex flex-col items-center" style="color: rgb(0, 117, 190);">
+                                            <strong style="display: block;">GUARDAR <br>
+                                                CONTACTO</strong>
+                                            {{-- <strong style="display: block;"></strong> --}}
                                         </div>
                                         <span class="ml-3" style="margin-left: 0.75rem">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 42.5" width="40px" height="35px">
@@ -152,30 +151,36 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-2 flex justify-center">
-                            <img src="{{ asset('storage/' . $user->nosotros->photo_de_la_empresa) }}" alt="Foto de Perfil de {{ $user->name }}" class="object-cover rounded-lg">
+                        <div class="mt-2 mx-auto flex justify-center md:w-1/2">
+                            @if (isset($user->nosotros->photo_de_la_empresa))
+                            <img src="{{ asset('storage/' . $user->nosotros->photo_de_la_empresa) }}" alt="Foto de Perfil de {{ $user->name }}" class="object-cover rounded-lg">    
+                            @else
+                            <img src="{{ asset('storage/photo_de_la_empresa/avatar.jpg') }}" alt="Foto de Perfil de {{ $user->name }}" class="object-cover rounded-lg">    
+                            @endif
                         </div>
-                        <div class="flex justify-center mt-6">
-                            @include('layouts.navigation-user')
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="sticky mt-5 bottom-5 inset-x-0 my-3 mb-6 sm:mb-5 mx-auto w-screen sm:w-fit">
+        @include('layouts.navigation-user')
+    </div>
+    
     <!-- Modal QR-->
     <div id="qrModal" class="fixed inset-0 flex items-center justify-center hidden" style="background-color: rgba(0, 0, 0, 0.5)">
         <div id="modalContent" class="p-8 rounded-md shadow-lg ">
             <div class="flex justify-center p-6 bg-white rounded-lg">
-                {!! QrCode::size(200)->generate(route('qr.compartir', ['token' => $user->login_token])) !!}
+                {!! QrCode::size(200)->generate(route('qr.compartir', ['nickname' => $user->nickname])) !!}
             </div>
         </div>
     </div>
 
     <script>
         function shareContent() {
-            var loginToken = "{{ $user->login_token }}";
+            var loginToken = "{{ $user->nickname }}";
             var url = window.location.origin + '/compartir/' + loginToken;
 
             if (navigator.share) {
@@ -212,12 +217,20 @@
             });
             var url = URL.createObjectURL(blob);
 
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = `${firstName}_${lastName}.vcf`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nuevo Contacto',
+                    text: 'Guardar Contacto',
+                    files: [new File([blob], 'vCard.vcf', { type: 'text/vcard' })],
+                }).then(() => { });
+            } else {
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = `${firstName}_${lastName}.vcf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
 
             URL.revokeObjectURL(url);
         }

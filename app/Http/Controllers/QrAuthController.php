@@ -12,7 +12,7 @@ class QrAuthController extends Controller
 {
     public function verQR($token)
     {
-        $user = User::where('login_token', $token)->first();
+        $user = User::where('nickname', $token)->first();
         $redes = RedesUser::where('user_id', $user->id)->get();
 
         return view('compartir', compact('user', 'redes'));

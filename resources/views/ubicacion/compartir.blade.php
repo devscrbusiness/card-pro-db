@@ -1,14 +1,12 @@
 <x-app-layout>
     @if(!Auth::check())
-    <a class="p-6 items-center justify-center flex" href="/">
-        <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-    </a>
+        @include('layouts.navigation-guest')
     @endif
     <div class="my-auto items-center justify-center flex">
         <div class="max-w-7xl sm:px-6 lg:px-8" style="width: 100vh">
             <div class="overflow-hidden shadow-sm rounded-lg bg-white">
                 <header class="mt-6">
-                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
+                    <h2 class="text-lg my-auto items-center flex justify-center barlow-extrabold" style="color: rgb(0, 117, 190);">
                         {{ 'UBICACION' }}
                     </h2>
                 </header>
@@ -20,11 +18,11 @@
                 </div>
                 <div class="flex-col justify-center mt-4 mx-auto">
                     <div class="flex justify-center">
-                        <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
+                        <h2 class="text-lg my-auto items-center flex justify-center barlow-extrabold" style="color: rgb(0, 117, 190);">
                             {{ 'OFICINA' }}
                         </h2>
                     </div>
-                    <strong class="flex justify-center" style="color: black">{{ $location->detalle ?? '' }}</strong>
+                    <strong class="flex justify-center barlow-medium" style="color: black">{{ $location->detalle ?? '' }}</strong>
                     <div class="flex justify-center">
                         <a href="#" id="open-map" class="flex justify-center items-center px-4 " style="background-color: rgb(0, 255, 255); color: rgb(0, 113, 188); border-radius: 1rem; padding-top: 0.25rem; padding-bottom: 0.25rem">
 
@@ -42,7 +40,7 @@
                                     </g>
                                 </g>
                             </svg>
-                            <strong>IR AHORA</strong>
+                            <strong class="barlow-extrabold">IR AHORA</strong>
                         </a>
                     </div>
                 </div>

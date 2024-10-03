@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Profesionales - DbCard</title>{{-- {{ config('app.name', 'Laravel') }} --}}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,7 +20,7 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 ">
         <div>
             <a href="/">
-                <x-application-logo class="w-32 h-20 fill-current text-white" />
+                <x-application-logo class="w-60 h-36 fill-current text-white" />
             </a>
         </div>
 

@@ -1,14 +1,12 @@
 <x-app-layout>
     @if(!Auth::check())
-    <a class="p-6 items-center justify-center flex" href="/">
-        <x-application-logo width="15rem" height="5rem" class="fill-current text-gray-500" />
-    </a>
+        @include('layouts.navigation-guest')
     @endif
     <div class="my-auto items-center justify-center flex">
         <div class="max-w-7xl sm:px-6 lg:px-8" style="height: 100vh; width: 100vh">
             <div class=" overflow-hidden shadow-sm rounded-lg bg-white">
                 <header class="mt-6">
-                    <h2 class="text-lg font-medium my-auto items-center flex justify-center" style="color: rgb(0, 117, 190);">
+                    <h2 class="text-lg my-auto items-center flex justify-center barlow-extrabold" style="color: rgb(0, 117, 190);">
                         {{ 'SERVICIOS' }}
                     </h2>
                 </header>
@@ -34,12 +32,12 @@
                         @if ($servicios->count() > 0)
                         @foreach($servicios as $servicio)
                         <div class="flex justify-center p-6">
-                            <strong class="flex justify-center items-center px-6"> {{ $servicio->servicio }}</strong>
+                            <strong class="flex justify-center items-center px-6 barlow-medium"> {{ $servicio->servicio }}</strong>
                         </div>
                         @endforeach
                         @else
                         <div class="flex justify-center p-6">
-                            <strong class="flex justify-center items-center px-6"> No hay servicios</strong>
+                            <strong class="flex justify-center items-center px-6 barlow-medium"> No hay servicios</strong>
                         </div>
                         @endif
                     </div>

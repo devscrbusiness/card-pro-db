@@ -20,8 +20,8 @@
 
                             <div id="map" style="height: 400px; width: 100%;" class="mb-4"></div>
 
-                            <input type="hidden" id="latitude" name="latitude" value="{{ $location->latitude ?? '' }}">
-                            <input type="hidden" id="longitude" name="longitude" value="{{ $location->longitude ?? '' }}">
+                            <input type="hidden" id="latitude" name="latitude" value="{{ $location->latitude ?? '-0.2224093' }}">
+                            <input type="hidden" id="longitude" name="longitude" value="{{ $location->longitude ?? '-78.5335029' }}">
 
                             <div>
                                 <x-input-label for="detalle" :value="__('Descripción')" />

@@ -38,9 +38,9 @@ return new class extends Migration
             $table->integer('last_activity')->index();
         });
 
-        // Añadir la columna login_token
+        // Añadir la columna nickname
         Schema::table('users', function (Blueprint $table) {
-            $table->string('login_token')->nullable()->after('password');
+            $table->string('nickname')->nullable()->after('password');
         });
 
         // Añadir la columna ocupacion

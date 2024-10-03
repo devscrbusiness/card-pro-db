@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 
 class CompartirControler extends Controller
 {
-    public function show($login_token)
+    public function show($nickname)
     {
-        $user = User::where('login_token', $login_token)->firstOrFail();
+        $user = User::where('nickname', $nickname)->firstOrFail();
         $redes = RedesUser::where('user_id', $user->id)->get();
         $servicios = ServicioUser::where('user_id', $user->id)->get();
         $location = LocationUser::where('user_id', $user->id)->first();
@@ -28,10 +28,10 @@ class CompartirControler extends Controller
         ]);
     }
 
-    public function nosotros($login_token)
+    public function nosotros($nickname)
     {
         try {
-            $user = User::where('login_token', $login_token)->firstOrFail();
+            $user = User::where('nickname', $nickname)->firstOrFail();
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();
@@ -48,9 +48,9 @@ class CompartirControler extends Controller
         }
     }
 
-    public function redes($token)
+    public function redes($nickname)
     {
-        $user = User::where('login_token', $token)->firstOrFail();
+        $user = User::where('nickname', $nickname)->firstOrFail();
         $redes = RedesUser::where('user_id', $user->id)->get();
         $servicios = ServicioUser::where('user_id', $user->id)->get();
         $location = LocationUser::where('user_id', $user->id)->first();
@@ -64,10 +64,10 @@ class CompartirControler extends Controller
         ]);
     }
 
-    public function servicios($token)
+    public function servicios($nickname)
     {
         try {
-            $user = User::where('login_token', $token)->firstOrFail();
+            $user = User::where('nickname', $nickname)->firstOrFail();
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();
@@ -84,10 +84,10 @@ class CompartirControler extends Controller
         }
     }
 
-    public function ubicacion($token)
+    public function ubicacion($nickname)
     {
         try {
-            $user = User::where('login_token', $token)->firstOrFail();
+            $user = User::where('nickname', $nickname)->firstOrFail();
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();

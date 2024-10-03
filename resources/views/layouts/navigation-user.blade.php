@@ -1,8 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 rounded-lg flex justify-center items-center my-auto">
     <div class="flex justify-center bg-white rounded-lg">
-        <div class="flex justify-between text-sm p-6" style="white-space: nowrap;">
-            @if ($user->login_token)
-            <a href="{{ route('compartir.show', ['login_token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
+        <div class="flex justify-between text-sm p-6 barlow-semibold" style="white-space: nowrap;">
+            @if ($user->nickname)
+            <a href="{{ route('compartir.show', ['nickname' => $user->nickname]) }}" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.84 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
@@ -32,7 +32,7 @@
             </a>
             @endif
             @if($user->nosotros)
-            <a class="text-black" href="{{ route('nosotros.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
+            <a class="text-black" href="{{ route('nosotros.compartir', ['nickname' => $user->nickname]) }}" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.68 36.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
@@ -70,7 +70,7 @@
             </a>
             @endif
             @if ($user->ubicacion)
-            <a class="text-black" href="{{ route('ubicacion.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
+            <a class="text-black" href="{{ route('ubicacion.compartir', ['nickname' => $user->nickname]) }}" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.15 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
@@ -94,7 +94,7 @@
             </a>
             @endif
             @if ($user->servicios)
-            <a class="text-black" href="{{ route('servicios.compartir', ['token' => $user->login_token]) }}" target="_blank" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
+            <a class="text-black" href="{{ route('servicios.compartir', ['nickname' => $user->nickname]) }}" style="border-right: 1px solid #d1d5db; padding-right: 12px; margin-right: 12px;">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.4 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
@@ -127,7 +127,7 @@
             </a>
             @endif
             @if ($user->redes)
-            <a class="text-black" href="{{ route('redes.compartir', ['token' => $user->login_token]) }}" target="_blank">
+            <a class="text-black" href="{{ route('redes.compartir', ['nickname' => $user->nickname]) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.84 34.8" width="40px" height="35px" class="mx-auto">
                     <defs>
                         <style>
