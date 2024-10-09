@@ -31,7 +31,7 @@ class DashboardController extends Controller
 
     public function generateNickname($user){
         return str_replace(' ', '', ucwords($user->name)).
-        str_replace(' ', '', ucwords($user->last_name)).
-        str_replace(' ', '', ucwords($user->ocupacion));
+        str_replace(' ', '', ucwords($user->last_name));
+        //str_replace(' ', '', ucwords($user->ocupacion));
     }
 }
