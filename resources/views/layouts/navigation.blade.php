@@ -11,6 +11,7 @@
                 </div>
 
                 <!-- Enlaces de Navegación -->
+                @if (!isset($user) || Auth::user()->nickname == $user->nickname)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
@@ -30,7 +31,30 @@
                     <x-nav-link :href="route('ubicacion.index')" :active="request()->routeIs('ubicacion.index')">
                         {{ __('Ubicación') }}
                     </x-nav-link>
+                </div>    
+                @else
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Inicio') }}
+                    </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('nosotros.compartir', ['nickname' => $user->nickname])" :active="request()->routeIs('nosotros.compartir', ['nickname' => $user->nickname])">
+                        {{ __('Nosotros') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('servicios.compartir', ['nickname' => $user->nickname])" :active="request()->routeIs('servicios.compartir', ['nickname' => $user->nickname])">
+                        {{ __('Servicios') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('ubicacion.compartir', ['nickname' => $user->nickname])" :active="request()->routeIs('ubicacion.compartir', ['nickname' => $user->nickname])">
+                        {{ __('Ubicación') }}
+                    </x-nav-link>
+                </div>
+                @endif
+                
             </div>
 
             <!-- Desplegable de Configuraciones -->

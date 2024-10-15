@@ -9,6 +9,7 @@ use App\Models\Redes;
 use App\Models\ServicioUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CompartirControler extends Controller
 {
@@ -18,6 +19,8 @@ class CompartirControler extends Controller
         $redes = RedesUser::where('user_id', $user->id)->get();
         $servicios = ServicioUser::where('user_id', $user->id)->get();
         $location = LocationUser::where('user_id', $user->id)->first();
+
+        View::share('user', $user);
 
         return view('compartir', [
             'user' => $user,
@@ -35,6 +38,8 @@ class CompartirControler extends Controller
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();
+
+            View::share('user', $user);
 
             return view('nosotros.compartir', [
                 'user' => $user,
@@ -55,6 +60,8 @@ class CompartirControler extends Controller
         $servicios = ServicioUser::where('user_id', $user->id)->get();
         $location = LocationUser::where('user_id', $user->id)->first();
 
+        View::share('user', $user);
+
         return view('redes.compartir', [
             'user' => $user,
             'redes' => $redes,
@@ -71,6 +78,8 @@ class CompartirControler extends Controller
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();
+
+            View::share('user', $user);
 
             return view('servicios.compartir', [
                 'user' => $user,
@@ -91,6 +100,8 @@ class CompartirControler extends Controller
             $redes = RedesUser::where('user_id', $user->id)->get();
             $servicios = ServicioUser::where('user_id', $user->id)->get();
             $location = LocationUser::where('user_id', $user->id)->first();
+
+            View::share('user', $user);
 
             return view('ubicacion.compartir', [
                 'user' => $user,

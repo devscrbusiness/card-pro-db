@@ -19,7 +19,11 @@
 <body class="font-sans antialiased" style="top: 0px; background-image: url('{{ asset('storage/background_picture/fondo-100.jpg') }}'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="min-h-screen">
         @if(Auth::check())
-        @include('layouts.navigation')
+            @if (isset($user))
+                @include('layouts.navigation', ['user' => $user])
+            @else
+                @include('layouts.navigation')
+            @endif
         @endif
 
         <!-- Page Heading -->
