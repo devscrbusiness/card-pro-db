@@ -42,8 +42,10 @@
                         @endif
                     </div>
                 </div>
-                @include('layouts.navigation-user')
             </div>
         </div>
+    </div>
+    <div class="sticky mt-5 bottom-5 inset-x-0 my-3 mb-6 sm:mb-5 mx-auto w-screen sm:w-fit">
+        @include('layouts.navigation-user')
     </div>
 </x-app-layout>

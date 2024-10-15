@@ -24,7 +24,7 @@
                     </div>
                     <strong class="flex justify-center barlow-medium" style="color: black">{{ $location->detalle ?? '' }}</strong>
                     <div class="flex justify-center">
-                        <a href="#" id="open-map" class="flex justify-center items-center px-4 " style="background-color: rgb(0, 255, 255); color: rgb(0, 113, 188); border-radius: 1rem; padding-top: 0.25rem; padding-bottom: 0.25rem">
+                        <a href="#" id="open-map" class="flex justify-center items-center px-4 mb-4" style="background-color: rgb(0, 255, 255); color: rgb(0, 113, 188); border-radius: 1rem; padding-top: 0.25rem; padding-bottom: 0.25rem">
 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.6 16.39" width="20px" height="15px">
                                 <defs>
@@ -44,9 +44,11 @@
                         </a>
                     </div>
                 </div>
-                @include('layouts.navigation-user')
             </div>
         </div>
+    </div>
+    <div class="sticky mt-5 bottom-5 inset-x-0 my-3 mb-6 sm:mb-5 mx-auto w-screen sm:w-fit">
+        @include('layouts.navigation-user')
     </div>
 
     <script>
